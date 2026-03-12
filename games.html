@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="th"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mini Games</title><link rel="stylesheet" href="css/style.css" /></head>
+<body>
+<header class="header">
+  <div class="brand"><div class="logo">ส</div> Singola Adventure</div>
+  <nav class="nav"><a href="index.html">หน้าหลัก</a><a href="map.html">แผนที่</a><a href="about.html">ข้อมูลทั่วไป</a></nav>
+  <div class="profile-actions"></div>
+</header>
+<main>
+  <h1>ระบบเกม (Mini Games) — GI ละ 5 เกม</h1>
+  <p class="small">ตัวอย่างเกม RPG: จับคู่สินค้า, Quiz, Puzzle, สำรวจแผนที่, เก็บไอเท็ม</p>
+  <div class="card">
+    <table class="table">
+      <thead><tr><th>เกม</th><th>สถานะ</th><th>การกระทำ</th></tr></thead>
+      <tbody id="game-table"></tbody>
+    </table>
+  </div>
+  <div style="margin-top:16px;display:flex;gap:8px;">
+    <a class="btn btn-secondary" href="map.html">กลับหน้าแผนที่</a>
+    <a class="btn btn-primary" href="certificate.html">ตรวจสอบเกียรติบัตร</a>
+  </div>
+</main>
+<script src="js/app.js"></script>
+<script>
+  const tbody = document.getElementById('game-table');
+  const labels = ['เกมจับคู่สินค้า GI','เกม Quiz ความรู้','เกม Puzzle','เกมสำรวจแผนที่','เกมเก็บไอเท็ม'];
+  function renderGames(){
+    const state = getState();
+    tbody.innerHTML = '';
+    labels.forEach((label, i) => {
+      const done = state.gi[i];
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${label}</td><td>${done ? 'เข้ม ✔' : 'จาง'}</td>
+      <td><button class="btn ${done ? 'btn-ghost' : 'btn-primary'}" ${done ? 'disabled' : ''} onclick="play(${i})">${done ? 'เล่นแล้ว' : 'เล่นเกม'}</button></td>`;
+      tbody.appendChild(tr);
+    });
+  }
+  function play(i){
+    markGiDone(i, 20);
+    renderGames();
+  }
+  renderGames();
+</script>
+</body></html>
