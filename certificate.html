@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="th"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>เกียรติบัตร</title><link rel="stylesheet" href="css/style.css" /></head>
+<body>
+<header class="header">
+  <div class="brand"><div class="logo">ส</div> Singola Adventure</div>
+  <nav class="nav"><a href="index.html">หน้าหลัก</a><a href="map.html">แผนที่</a><a href="about.html">ข้อมูลทั่วไป</a></nav>
+  <div class="profile-actions"></div>
+</header>
+<main>
+  <h1>ระบบเกียรติบัตร</h1>
+  <section class="card" id="cert-card"></section>
+</main>
+<script src="js/app.js"></script>
+<script>
+  const state = getState();
+  const completed = state.gi.filter(Boolean).length;
+  const card = document.getElementById('cert-card');
+  if (completed === 5) {
+    card.innerHTML = `
+      <h2>ขอแสดงความยินดี! ผ่านครบ 5 GI</h2>
+      <p>คะแนนรวม: <strong>${state.score}</strong></p>
+      <p>ระบบสร้างเกียรติบัตรอัตโนมัติแล้ว สามารถดาวน์โหลดเป็น PDF ได้ด้วยคำสั่งพิมพ์ของเบราว์เซอร์</p>
+      <button class="btn btn-primary" onclick="window.print()">ดาวน์โหลดเป็น PDF</button>
+    `;
+  } else {
+    card.innerHTML = `<p>ยังเล่นไม่ครบ 5 GI (ปัจจุบัน ${completed}/5)</p><a class="btn btn-primary" href="games.html">ไปเล่นเกมต่อ</a>`;
+  }
+</script>
+</body></html>

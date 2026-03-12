@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>แผนที่จังหวัดสงขลา</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="brand"><div class="logo">ส</div> Singola Adventure</div>
+    <nav class="nav">
+      <a href="index.html">หน้าหลัก</a><a class="active" href="map.html">แผนที่</a><a href="about.html">ข้อมูลทั่วไป</a>
+    </nav>
+    <div class="profile-actions"></div>
+  </header>
+  <main>
+    <h1>แผนที่จังหวัดสงขลา (Interactive)</h1>
+    <div class="map-wrap">
+      <div class="card">
+        <svg id="songkhla-map" viewBox="0 0 500 350" role="img" aria-label="แผนที่สงขลา">
+          <polygon class="district" data-name="หาดใหญ่" points="80,110 190,80 210,160 100,180"/>
+          <polygon class="district" data-name="เมืองสงขลา" points="250,90 360,80 380,160 260,170"/>
+          <polygon class="district" data-name="สิงหนคร" points="220,180 350,170 330,270 210,260"/>
+        </svg>
+        <p class="small">คลิกอำเภอเพื่อ Zoom เข้าและไปหน้าข้อมูลอำเภอ</p>
+      </div>
+      <aside class="card">
+        <h3>ความคืบหน้า 5 GI</h3>
+        <div id="gi-progress"></div>
+      </aside>
+    </div>
+  </main>
+  <div class="speech" id="mascot-text">ยินดีต้อนรับสู่การผจญภัย Soft Power สงขลา!</div>
+  <div class="mascot">🐣</div>
+  <script src="js/app.js"></script>
+  <script>
+    document.querySelectorAll('.district').forEach((d) => {
+      d.addEventListener('click', () => {
+        d.classList.add('active');
+        d.style.transform = 'scale(1.2)';
+        setTimeout(() => {
+          location.href = `district.html?name=${encodeURIComponent(d.dataset.name)}`;
+        }, 350);
+      });
+    });
+  </script>
+</body>
+</html>

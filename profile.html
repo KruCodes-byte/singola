@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="th"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>โปรไฟล์</title><link rel="stylesheet" href="css/style.css" /></head>
+<body>
+<header class="header">
+  <div class="brand"><div class="logo">ส</div> Singola Adventure</div>
+  <nav class="nav"><a href="index.html">หน้าหลัก</a><a href="map.html">แผนที่</a><a href="about.html">ข้อมูลทั่วไป</a></nav>
+  <div class="profile-actions"></div>
+</header>
+<main>
+  <h1>โปรไฟล์ผู้ใช้</h1>
+  <section class="card" id="profile"></section>
+</main>
+<script src="js/app.js"></script>
+<script>
+  const state = getState();
+  const profile = document.getElementById('profile');
+  if (!state.user) {
+    profile.innerHTML = '<p>กรุณาเข้าสู่ระบบ</p><button class="btn btn-primary" onclick="fakeLogin()">เข้าสู่ระบบ</button>';
+  } else {
+    const passed = state.gi.filter(Boolean).length;
+    profile.innerHTML = `
+      <p>👤 <strong>ชื่อ–สกุล:</strong> ${state.user.name}</p>
+      <p>📧 <strong>Gmail:</strong> ${state.user.email}</p>
+      <p>🏆 <strong>คะแนนรวม:</strong> ${state.score}</p>
+      <p>🎮 <strong>เกมที่ผ่าน:</strong> ${passed}/5</p>
+      <p>📜 <strong>เกียรติบัตร:</strong> ${passed === 5 ? 'พร้อมใช้งาน' : 'ยังไม่ครบเงื่อนไข'}</p>
+      <button class="btn btn-secondary" onclick="logout()">ออกจากระบบ</button>
+    `;
+  }
+  function logout(){
+    const state = getState();
+    state.user = null;
+    setState(state);
+    location.href = 'index.html';
+  }
+</script>
+</body></html>

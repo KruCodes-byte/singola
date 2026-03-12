@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ข้อมูลอำเภอ</title><link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="brand"><div class="logo">ส</div> Singola Adventure</div>
+    <nav class="nav"><a href="index.html">หน้าหลัก</a><a class="active" href="map.html">แผนที่</a><a href="about.html">ข้อมูลทั่วไป</a></nav>
+    <div class="profile-actions"></div>
+  </header>
+  <main>
+    <h1 id="district-name">ข้อมูลอำเภอ</h1>
+    <div class="grid-2">
+      <section class="card">
+        <h3>แผนที่อำเภอและจุดสำคัญ</h3>
+        <svg viewBox="0 0 400 240" style="width:100%; background:#e8f5e9; border-radius:12px;">
+          <circle cx="90" cy="120" r="12" fill="#e53935"/><text x="110" y="125">แหล่งผลิต GI</text>
+          <circle cx="260" cy="90" r="12" fill="#fb8c00"/><text x="280" y="95">วัฒนธรรม</text>
+          <circle cx="250" cy="180" r="12" fill="#1e88e5"/><text x="270" y="185">แหล่งท่องเที่ยว</text>
+        </svg>
+      </section>
+      <section class="card">
+        <h3>ข้อมูลสินค้า GI</h3>
+        <ul>
+          <li><strong>ประวัติ:</strong> สินค้า GI มีรากจากภูมิปัญญาท้องถิ่นของชุมชน</li>
+          <li><strong>ความสำคัญ:</strong> สร้างมูลค่าเศรษฐกิจและอัตลักษณ์พื้นที่</li>
+          <li><strong>แหล่งผลิต:</strong> ชุมชนในอำเภอและเครือข่ายเกษตรกร</li>
+        </ul>
+      </section>
+    </div>
+    <section class="card" style="margin-top:16px;">
+      <h3>วิดีโอการเรียนรู้</h3>
+      <iframe class="video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="video"></iframe>
+      <div style="margin-top:12px; display:flex; gap:8px;">
+        <a class="btn btn-primary" href="games.html">เริ่มเรียนรู้</a>
+      </div>
+    </section>
+  </main>
+  <div class="speech" id="mascot-text">ยินดีต้อนรับสู่การผจญภัย Soft Power สงขลา!</div>
+  <div class="mascot">🐣</div>
+  <script src="js/app.js"></script>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const district = params.get('name') || 'อำเภอตัวอย่าง';
+    document.getElementById('district-name').textContent = `ข้อมูลอำเภอ: ${district}`;
+  </script>
+</body>
+</html>
