@@ -1,7 +1,7 @@
-.map-container{
+.map-wrapper{
     position: relative;
     width: 100%;
-    height: 100vh;   /* หรือความสูงที่ใช้ */
+    height: 100vh;
     background: #fff;
 }
 
@@ -10,10 +10,21 @@
     height: 100%;
 }
 
-.map-logo{
+/* ⭐ โลโก้ลอยนิ่ง */
+.floating-logo{
     position: absolute;
-    top: 15px;
-    left: 15px;
-    width: 120px;     /* ปรับขนาดโลโก้ */
-    z-index: 999;     /* ให้อยู่ด้านบน */
+    top: 20px;
+    left: 20px;
+    width: 140px;
+    z-index: 9999;
+    pointer-events: none;   /* กันบังการคลิกแผนที่ */
+}
+
+
+.floating-logo{
+    position: fixed;
+    top: 90px;     /* เผื่อ header */
+    left: 25px;
+    width: 140px;
+    z-index: 9999;
 }
